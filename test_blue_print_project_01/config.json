@@ -6,26 +6,26 @@
     {
       "key": "OPENAI_API_KEY",
       "description": "Used by agents to access GPT models",
-      "required": true,
+      "required": true
     },
     {
       "key": "GOOGLE_CALENDAR_TOKEN",
       "description": "Token to access the user's calendar for scheduling",
-      "required": false,
+      "required": false
     }
   ],
   "agents": [
     {
       "name": "calendar_fetcher",
-      "description": "Fetches user availability from calendar.",
+      "description": "Fetches user availability from calendar."
     },
     {
       "name": "scheduler",
-      "description": "Suggests best meeting times based on availability.",
+      "description": "Suggests best meeting times based on availability."
     },
     {
       "name": "notifier",
-      "description": "Sends notifications once the meeting is scheduled.",
+      "description": "Sends notifications once the meeting is scheduled."
     }
   ],
   "graph": {
