@@ -1,0 +1,47 @@
+{
+  "framework": "langgraph",
+  "blueprint_name": "email_resolver",
+  "description": "A multi-agent system that schedules meetings based on availability and preferences.",
+  "secrets": [
+    {
+      "key": "OPENAI_API_KEY",
+      "description": "Used by agents to access GPT models",
+      "required": true,
+      "value": "sk-abc123example"
+    },
+    {
+      "key": "GOOGLE_CALENDAR_TOKEN",
+      "description": "Token to access the user's calendar for scheduling",
+      "required": false,
+      "value": "ya29.A0AfH6SMCgEXAMPLE"
+    }
+  ],
+  "agents": [
+    {
+      "name": "calendar_fetcher",
+      "display_name": "Calendar Fetcher Agent",
+      "description": "Fetches user availability from calendar.",
+      "endpoint": "http://localhost:8000/agents/calendar_fetcher"
+    },
+    {
+      "name": "scheduler",
+      "display_name": "Scheduler Agent",
+      "description": "Suggests best meeting times based on availability.",
+      "endpoint": "http://localhost:8000/agents/scheduler"
+    },
+    {
+      "name": "notifier",
+      "display_name": "Notifier Agent",
+      "description": "Sends notifications once the meeting is scheduled.",
+      "endpoint": "http://localhost:8000/agents/notifier"
+    }
+  ],
+  "graph": {
+    "edges": [
+      { "from": "start", "to": "calendar_fetcher" },
+      { "from": "calendar_fetcher", "to": "scheduler" },
+      { "from": "scheduler", "to": "notifier" },
+      { "from": "notifier", "to": "end" }
+    ]
+  }
+}
