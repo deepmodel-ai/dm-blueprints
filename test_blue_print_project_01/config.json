@@ -1,6 +1,7 @@
 {
   "framework": "langgraph",
   "blueprint_name": "email_resolver",
+  "category": "content_generation",
   "description": "A multi-agent system that schedules meetings based on availability and preferences.",
   "secrets": [
     {
