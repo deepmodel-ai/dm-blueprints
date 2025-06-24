@@ -1,7 +1,8 @@
 {
   "framework": "langgraph",
-  "blueprint_name": "email_resolver",
-  "description": "A multi-agent system that schedules meetings based on availability and preferences.",
+  "blueprint_name": "blogger_resolver",
+  "category": "content_generation",
+  "description": "A multi-agent system that generates, edits, and schedules blog posts based on topics and deadlines.",
   "secrets": [
     {
       "key": "OPENAI_API_KEY",
@@ -9,31 +10,36 @@
       "required": true
     },
     {
-      "key": "GOOGLE_CALENDAR_TOKEN",
-      "description": "Token to access the user's calendar for scheduling",
+      "key": "BLOGGER_API_TOKEN",
+      "description": "Token to publish posts to a Blogger account",
       "required": false
     }
   ],
   "agents": [
     {
-      "name": "calendar_fetcher",
-      "description": "Fetches user availability from calendar."
+      "name": "topic_extractor",
+      "description": "Extracts blog post topics from user input or content backlog."
     },
     {
-      "name": "scheduler",
-      "description": "Suggests best meeting times based on availability."
+      "name": "content_writer",
+      "description": "Generates blog content based on extracted topics."
     },
     {
-      "name": "notifier",
-      "description": "Sends notifications once the meeting is scheduled."
+      "name": "editor",
+      "description": "Refines and edits the generated content for tone, grammar, and SEO."
+    },
+    {
+      "name": "publisher",
+      "description": "Schedules or publishes the final blog post using the Blogger API."
     }
   ],
   "graph": {
     "edges": [
-      { "from": "start", "to": "calendar_fetcher" },
-      { "from": "calendar_fetcher", "to": "scheduler" },
-      { "from": "scheduler", "to": "notifier" },
-      { "from": "notifier", "to": "end" }
+      { "from": "start", "to": "topic_extractor" },
+      { "from": "topic_extractor", "to": "content_writer" },
+      { "from": "content_writer", "to": "editor" },
+      { "from": "editor", "to": "publisher" },
+      { "from": "publisher", "to": "end" }
     ]
   }
 }
