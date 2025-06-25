@@ -1,7 +1,7 @@
 {
   "framework": "langgraph",
   "blueprint_name": "email_resolver",
-  "category": "content_generation",
+  "architecture_file_path": "https://github.com/deepmodel-ai/dm-blue-print/blob/main/email_resolver/architecture/graph.py",
   "description": "A multi-agent system that schedules meetings based on availability and preferences.",
   "secrets": [
     {
