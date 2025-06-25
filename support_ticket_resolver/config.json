@@ -1,7 +1,7 @@
 {
   "framework": "adk",
   "blueprint_name": "support_ticket_resolver",
-  "architecture_file_path": "architecture.py",
+  "architecture_file_path": "https://github.com/deepmodel-ai/dm-blue-print/blob/main/support_ticket_resolver/workflow/main.py",
   "description": "A multi-agent system that classifies support tickets and drafts responses using a knowledge base.",
   "secrets": [
     {
