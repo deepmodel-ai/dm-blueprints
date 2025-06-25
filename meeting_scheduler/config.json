@@ -1,0 +1,40 @@
+{
+  "framework": "adk",
+  "blueprint_name": "meeting_scheduler",
+  "architecture_file_path": "https://github.com/deepmodel-ai/dm-blue-print/blob/main/meeting_scheduler/runner/runner.py",
+  "description": "A multi-agent system that extracts intent from input and schedules meetings.",
+  "secrets": [
+    {
+      "key": "OPENAI_API_KEY",
+      "description": "Used for natural language understanding",
+      "required": true
+    },
+    {
+      "key": "CALENDAR_API_TOKEN",
+      "description": "Used to interact with the user's calendar",
+      "required": true
+    }
+  ],
+  "agents": [
+    {
+      "name": "intent_parser",
+      "description": "Parses user input to extract time, participants, and topic."
+    },
+    {
+      "name": "availability_checker",
+      "description": "Checks calendar for available time slots."
+    },
+    {
+      "name": "scheduler",
+      "description": "Schedules the meeting using calendar APIs."
+    }
+  ],
+  "graph": {
+    "edges": [
+      { "from": "start", "to": "intent_parser" },
+      { "from": "intent_parser", "to": "availability_checker" },
+      { "from": "availability_checker", "to": "scheduler" },
+      { "from": "scheduler", "to": "end" }
+    ]
+  }
+}
