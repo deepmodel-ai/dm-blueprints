@@ -1,7 +1,7 @@
 {
   "framework": "langgraph",
   "blueprint_name": "blogger_resolver",
-  "architecture_file_path": "/agents/main.py"
+  "architecture_file_path": "https://github.com/deepmodel-ai/dm-blue-print/blob/main/blogger_resolver/agents/main.py"
   "description": "A multi-agent system that generates, edits, and schedules blog posts based on topics and deadlines.",
   "secrets": [
     {
