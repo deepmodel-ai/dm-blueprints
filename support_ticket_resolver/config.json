@@ -1,0 +1,35 @@
+{
+  "framework": "adk",
+  "blueprint_name": "support_ticket_resolver",
+  "architecture_file_path": "architecture.py",
+  "description": "A multi-agent system that classifies support tickets and drafts responses using a knowledge base.",
+  "secrets": [
+    {
+      "key": "OPENAI_API_KEY",
+      "description": "Used for classification and answer generation",
+      "required": true
+    }
+  ],
+  "agents": [
+    {
+      "name": "ticket_classifier",
+      "description": "Classifies the type of support ticket (billing, technical, general)."
+    },
+    {
+      "name": "kb_retriever",
+      "description": "Searches the knowledge base for relevant articles."
+    },
+    {
+      "name": "ticket_responder",
+      "description": "Drafts a support response using classification and KB results."
+    }
+  ],
+  "graph": {
+    "edges": [
+      { "from": "start", "to": "ticket_classifier" },
+      { "from": "ticket_classifier", "to": "kb_retriever" },
+      { "from": "kb_retriever", "to": "ticket_responder" },
+      { "from": "ticket_responder", "to": "end" }
+    ]
+  }
+}
