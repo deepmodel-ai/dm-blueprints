@@ -1,7 +1,7 @@
 {
   "framework": "langgraph",
   "blueprint_name": "blogger_resolver",
-  "category": "content_generation",
+  "architecture_file_path": "/agents/main.py"
   "description": "A multi-agent system that generates, edits, and schedules blog posts based on topics and deadlines.",
   "secrets": [
     {
