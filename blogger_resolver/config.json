@@ -15,32 +15,5 @@
       "description": "Token to publish posts to a Blogger account",
       "required": false
     }
-  ],
-  "agents": [
-    {
-      "name": "topic_extractor",
-      "description": "Extracts blog post topics from user input or content backlog."
-    },
-    {
-      "name": "content_writer",
-      "description": "Generates blog content based on extracted topics."
-    },
-    {
-      "name": "editor",
-      "description": "Refines and edits the generated content for tone, grammar, and SEO."
-    },
-    {
-      "name": "publisher",
-      "description": "Schedules or publishes the final blog post using the Blogger API."
-    }
-  ],
-  "graph": {
-    "edges": [
-      { "from": "start", "to": "topic_extractor" },
-      { "from": "topic_extractor", "to": "content_writer" },
-      { "from": "content_writer", "to": "editor" },
-      { "from": "editor", "to": "publisher" },
-      { "from": "publisher", "to": "end" }
-    ]
-  }
+  ]
 }
