@@ -32,11 +32,11 @@ async def read_secrets(
     """
     try:
         openai_key = os.getenv("OPENAI_API_KEY", "Not Found")
-        openai_key = os.getenv("GOOGLE_CALENDAR_TOKEN", "Not Found")
-        
+        calendar_token = os.getenv("GOOGLE_CALENDAR_TOKEN", "Not Found")
+
         return {
-            openai_key=openai_key,
-            openai_key=calendar_token
+            "openai_key": openai_key,
+            "calendar_token": calendar_token
         }
     except Exception as e:
         raise HTTPException(
