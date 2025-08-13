@@ -23,7 +23,7 @@ async def read_root():
     """Root endpoint to verify service is running."""
     return HelloResponse(message="Hello World from Cloud Run!")
 
-@app.get("/my-secrets", response_model=SecretsCheckResponse)
+@app.get("/my-secrets")
 async def read_secrets(
 ):
     """
