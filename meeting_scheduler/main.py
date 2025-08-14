@@ -35,8 +35,8 @@ async def read_secrets(
         calendar_token = os.getenv("GOOGLE_CALENDAR_TOKEN", "Not Found")
 
         return {
-            openai_key=openai_key,
-            calendar_token=calendar_token
+            "openai_key": openai_key,
+            "calendar_token": calendar_token
         }
     except Exception as e:
         raise HTTPException(
