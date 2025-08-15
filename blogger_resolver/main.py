@@ -23,7 +23,7 @@ async def read_root():
     """Root endpoint to verify service is running."""
     return HelloResponse(message="Hello World from Cloud Run!")
 
-@app.get("/my-secrets", response_model=SecretsCheckResponse)
+@app.get("/my-secrets")
 async def read_secrets(
 ):
     """
@@ -32,12 +32,12 @@ async def read_secrets(
     """
     try:
         openai_key = os.getenv("OPENAI_API_KEY", "Not Found")
-        calendar_token = os.getenv("CALENDAR_API_TOKEN", "Not Found")
-        
-        return SecretsCheckResponse(
-            is_openai_key_present=openai_key != "Not Found",
-            is_calendar_token_present=calendar_token != "Not Found"
-        )
+        calendar_token = os.getenv("GOOGLE_CALENDAR_TOKEN", "Not Found")
+
+        return {
+            "openai_key": openai_key,
+            "calendar_token": calendar_token
+        }
     except Exception as e:
         raise HTTPException(
             status_code=500, 
@@ -46,4 +46,5 @@ async def read_secrets(
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port)
